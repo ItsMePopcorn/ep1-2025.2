@@ -1,20 +1,42 @@
 package Entities;
 
 public class PacienteEspecial extends Paciente {
+    private PlanoSaude plano;
 
-    private int plano;
-
-    public PacienteEspecial(String nome, String cpf, int idade, int plano) {
+    public PacienteEspecial(String nome, String cpf, int idade, PlanoSaude plano) {
         super(nome, cpf, idade);
-        this.plano=plano;
+        this.plano = plano;
+    }
+    
+    public double custoConsulta(Consulta consulta){
+        double custoPadrao = super.custoConsulta(consulta);
+        Especialidade especialidade = consulta.getMedico().getEspecialidade();
+        double descontoPlano = plano.getDescontoEspecialidade(especialidade);
+        return custoPadrao*(1 - descontoPlano);
+    }
+    
+    public double custoInternacao(Internacao internacao){
+
+        if (plano.isInternacaoGratuita() && internacao.getDuracao() <= 7){
+            return 0.0;
+        }
+
+        double custoPadrao = super.custoInternacao(internacao);
+        return custoPadrao * 0.7;
     }
 
-    public void setPlano(int plano){
-        this.plano=plano;
+    @Override
+    public void infoPaciente() {
+        super.infoPaciente();
+        System.out.println("Plano: " + this.plano.getNome()); 
+        System.out.println("--------------------------------------\n");
     }
 
-    public int getPlano(){
-        return plano;
+    public PlanoSaude getPlano() {
+         return plano; 
     }
 
+    public void setPlano(PlanoSaude plano) {
+        this.plano = plano; 
+    }
 }
