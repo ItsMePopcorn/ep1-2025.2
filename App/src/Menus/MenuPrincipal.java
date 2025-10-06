@@ -9,6 +9,7 @@ public class MenuPrincipal {
     private final MenuMedicos menuMedicos;
     private final MenuCadastros menuCadastros;
     private final MenuConsultas menuConsultas;
+    private final MenuInternacoes menuInternacoes;
 
     public MenuPrincipal(HospitalService hospitalService) {
         this.scanner = new Scanner(System.in);
@@ -16,6 +17,7 @@ public class MenuPrincipal {
         this.menuMedicos = new MenuMedicos(hospitalService, scanner);
         this.menuCadastros = new MenuCadastros(hospitalService, scanner);
         this.menuConsultas = new MenuConsultas(hospitalService, scanner);
+        this.menuInternacoes = new MenuInternacoes(hospitalService, scanner);
     }
 
     public void exibir() {
@@ -25,18 +27,26 @@ public class MenuPrincipal {
             System.out.println("1. Gerenciar Pacientes");
             System.out.println("2. Gerenciar Médicos");
             System.out.println("3. Gerenciar Consultas e Agendamentos");
-            System.out.println("4. Cadastros Básicos (Planos, Quartos, Especialidades)");
+            System.out.println("4. Gerenciar Internações");
+            System.out.println("5. Cadastros Básicos (Planos, Quartos, Especialidades)");
             System.out.println("0. Sair do Sistema");
             System.out.print("Escolha uma opção: ");
 
             try {
                 opcao = Integer.parseInt(scanner.nextLine());
                 switch (opcao) {
-                    case 1: menuPacientes.exibir(); break;
-                    case 2: menuMedicos.exibir(); break;
-                    case 3: menuConsultas.exibir(); break;
-                    case 4: menuCadastros.exibir(); break;
-                    case 0: System.out.println("Saindo do sistema... Até logo!"); break;
+                    case 1: menuPacientes.exibir();
+                        break;
+                    case 2: menuMedicos.exibir();  
+                        break;
+                    case 3: menuConsultas.exibir(); 
+                        break;
+                    case 4: menuInternacoes.exibir(); 
+                        break;
+                    case 5: menuCadastros.exibir(); 
+                        break;
+                    case 0: System.out.println("Saindo do sistema... Até logo!"); 
+                        break;
                     default: System.out.println("Opção inválida. Tente novamente.");
                 }
             } catch (NumberFormatException e) {
