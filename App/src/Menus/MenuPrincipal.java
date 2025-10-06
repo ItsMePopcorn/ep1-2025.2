@@ -8,13 +8,14 @@ public class MenuPrincipal {
     private final MenuPacientes menuPacientes;
     private final MenuMedicos menuMedicos;
     private final MenuCadastros menuCadastros;
+    private final MenuConsultas menuConsultas;
 
     public MenuPrincipal(HospitalService hospitalService) {
         this.scanner = new Scanner(System.in);
         this.menuPacientes = new MenuPacientes(hospitalService, scanner);
         this.menuMedicos = new MenuMedicos(hospitalService, scanner);
         this.menuCadastros = new MenuCadastros(hospitalService, scanner);
-
+        this.menuConsultas = new MenuConsultas(hospitalService, scanner);
     }
 
     public void exibir() {
@@ -23,7 +24,8 @@ public class MenuPrincipal {
             System.out.println("\n========= MENU PRINCIPAL =========");
             System.out.println("1. Gerenciar Pacientes");
             System.out.println("2. Gerenciar Médicos");
-            System.out.println("3. Cadastros Básicos (Planos, Quartos, Especialidades)");
+            System.out.println("3. Gerenciar Consultas e Agendamentos");
+            System.out.println("4. Cadastros Básicos (Planos, Quartos, Especialidades)");
             System.out.println("0. Sair do Sistema");
             System.out.print("Escolha uma opção: ");
 
@@ -32,7 +34,8 @@ public class MenuPrincipal {
                 switch (opcao) {
                     case 1: menuPacientes.exibir(); break;
                     case 2: menuMedicos.exibir(); break;
-                    case 3: menuCadastros.exibir(); break;
+                    case 3: menuConsultas.exibir(); break;
+                    case 4: menuCadastros.exibir(); break;
                     case 0: System.out.println("Saindo do sistema... Até logo!"); break;
                     default: System.out.println("Opção inválida. Tente novamente.");
                 }
