@@ -1,6 +1,7 @@
 package Menus;
 
 import Services.HospitalService;
+import Services.RelatorioService;
 import java.util.Scanner;
 
 public class MenuPrincipal {
@@ -10,14 +11,16 @@ public class MenuPrincipal {
     private final MenuCadastros menuCadastros;
     private final MenuConsultas menuConsultas;
     private final MenuInternacoes menuInternacoes;
+    private final MenuRelatorios menuRelatorios;
 
-    public MenuPrincipal(HospitalService hospitalService) {
+    public MenuPrincipal(HospitalService hospitalService, RelatorioService relatorioService) {
         this.scanner = new Scanner(System.in);
         this.menuPacientes = new MenuPacientes(hospitalService, scanner);
         this.menuMedicos = new MenuMedicos(hospitalService, scanner);
         this.menuCadastros = new MenuCadastros(hospitalService, scanner);
         this.menuConsultas = new MenuConsultas(hospitalService, scanner);
         this.menuInternacoes = new MenuInternacoes(hospitalService, scanner);
+        this.menuRelatorios = new MenuRelatorios(relatorioService, scanner);
     }
 
     public void exibir() {
@@ -29,6 +32,7 @@ public class MenuPrincipal {
             System.out.println("3. Gerenciar Consultas e Agendamentos");
             System.out.println("4. Gerenciar Internações");
             System.out.println("5. Cadastros Básicos (Planos, Quartos, Especialidades)");
+            System.out.println("6. Gerar Relatórios");
             System.out.println("0. Sair do Sistema");
             System.out.print("Escolha uma opção: ");
 
@@ -44,6 +48,8 @@ public class MenuPrincipal {
                     case 4: menuInternacoes.exibir(); 
                         break;
                     case 5: menuCadastros.exibir(); 
+                        break;
+                    case 6: menuRelatorios.exibir();
                         break;
                     case 0: System.out.println("Saindo do sistema... Até logo!"); 
                         break;
