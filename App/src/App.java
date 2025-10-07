@@ -1,5 +1,6 @@
 import Entities.Especialidade;
 import Services.HospitalService;
+import Services.RelatorioService;
 import Menus.MenuPrincipal;
 
 public class App {
@@ -9,6 +10,7 @@ public class App {
         System.out.println("==============================================");
 
         HospitalService hospitalService = new HospitalService();
+        RelatorioService relatorioService = new RelatorioService(hospitalService);
 
         hospitalService.cadastrarEspecialidade("Cardiologia");
         hospitalService.cadastrarEspecialidade("Pediatria");
@@ -16,7 +18,7 @@ public class App {
         hospitalService.cadastrarMedico("Dr. Robson", "67890", cardiologia, 350.0);
         hospitalService.cadastrarPaciente("Joãozinho", "6789", 45, null);
 
-        MenuPrincipal menu = new MenuPrincipal(hospitalService);
+        MenuPrincipal menu = new MenuPrincipal(hospitalService, relatorioService);
         menu.exibir();
     }
 }
