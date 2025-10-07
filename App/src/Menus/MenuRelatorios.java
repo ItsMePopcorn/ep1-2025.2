@@ -18,20 +18,23 @@ public class MenuRelatorios {
             System.out.println("\n--- Submenu de Relatórios ---");
             System.out.println("1. Listar Pacientes com Histórico");
             System.out.println("2. Listar Médicos");
+            System.out.println("3. Ver Estatísticas");
             //consultas
             //internacoes
-            //estatisticas
             System.out.println("0. Voltar");
             System.out.print("Escolha um relatório: ");
 
             try {
                 opcao = Integer.parseInt(scanner.nextLine());
                 switch (opcao) {
-                    case 1: relatorioService.imprimirRelatorioPacientes(); break;
-                    case 2: relatorioService.imprimirRelatorioMedicos(); break;
-                    case 3: //relatorio das consultas
-                    case 4: //relatorio das internacoes
-                    case 5: //relatorio das estatisticas
+                    case 1: relatorioService.imprimirRelatorioPacientes(); 
+                        break;
+                    case 2: relatorioService.imprimirRelatorioMedicos(); 
+                        break;
+                    case 3: relatorioService.imprimirEstatisticasGerais();
+                        break;
+                    //case 4: relatorio das internacoes
+                    //case 5: relatorio das consultas
                     case 0: break;
                     default: System.out.println("Opção inválida.");
                 }
