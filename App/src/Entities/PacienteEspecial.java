@@ -16,6 +16,7 @@ public class PacienteEspecial extends Paciente {
         return custoPadrao*(1 - descontoPlano);
     }
     
+    @Override
     public double custoInternacao(Internacao internacao){
 
         if (plano.isInternacaoGratuita() && internacao.getDuracao() <= 7){
