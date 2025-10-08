@@ -59,6 +59,10 @@ public class Internacao {
         return dataEntrada; 
     }
 
+    public void setDataEntrada(LocalDate dataEntrada){
+        this.dataEntrada=dataEntrada;
+    }
+
     public LocalDate getDataSaida(){ 
         return dataSaida; 
     }
