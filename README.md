@@ -20,43 +20,110 @@ Desenvolvimento de um sistema de gerenciamento hospitalar utilizando os conceito
 ## Instruções para Compilação e Execução
 
 1. **Compilação:**  
-   [Descrever aqui como compilar o projeto. Exemplo: `javac Main.java` ou o script usado]
+   Pelo vscode:
+      Instale, na aba de extensões, a extensão "Extension Pack for Java"
+      Compile diretamente pelo vscode
+
+   Pelo terminal:
+      Abra a pasta raiz
+      Crie a pasta bin (caso não exista) com:
+         mkdir bin
+      Compile com
+         javac -d bin -sourcepath src src\App.java
+
 
 2. **Execução:**  
-   [Descrever aqui como executar o projeto. Exemplo: `java Main` ou o script usado]
+   Pelo vscode:
+      Abra o arquivo App.java, no vscode
+      Clique no botão de execução, no canto superior direito
+
+   Pelo terminal:
+      Execute com:
+         java -cp bin App
 
 3. **Estrutura de Pastas:**  
-   [Descrever aqui as principais pastas do projeto]
+ App 
+├── src/
+│   │
+│   ├── Entities/
+│   │   ├── Paciente.java
+│   │   ├── PacienteEspecial.java
+│   │   ├── Medico.java
+│   │   ├── Consulta.java
+│   │   ├── Internacao.java
+│   │   ├── PlanoSaude.java
+│   │   ├── Especialidade.java
+│   │   ├── DescontoEspecialidade.java
+│   │   ├── Quarto.java
+│   │   └── StatusConsulta.java
+│   │
+│   ├── Menus/
+│   │   ├── App.java (Ponto de Entrada Principal)
+│   │   ├── MenuPrincipal.java 
+│   │   ├── MenuPacientes.java
+│   │   ├── MenuMedicos.java
+│   │   ├── MenuConsultas.java
+│   │   ├── MenuInternacoes.java
+│   │   ├── MenuCadastros.java
+│   │   └── MenuRelatorios.java
+│   │
+│   ├── Persistencia/
+│   │   ├── PacientePersistencia.java
+│   │   ├── MedicoPersistencia.java
+│   │   ├── ConsultaPersistencia.java
+│   │   ├── InternacaoPersistencia.java
+│   │   ├── PlanoSaudePersistencia.java
+│   │   ├── EspecialidadePersistencia.java
+│   │   └── QuartoPersistencia.java
+│   │
+│   └── Services/
+│       │
+│       ├── Nucleo/
+│       │   ├── PacienteService.java
+│       │   ├── MedicoService.java
+│       │   ├── ConsultaService.java
+│       │   ├── InternacaoService.java
+│       │   └── CadastroService.java
+│       │
+│       ├── Relatorios/
+│       │   ├── RelatorioPacientes.java
+│       │   ├── RelatorioMedicos.java
+│       │   ├── RelatorioConsultas.java
+│       │   ├── RelatorioInternacoes.java
+│       │   └── RelatorioEstatisticas.java
+│       │
+│       ├── HospitalService.java (Fachada Principal)
+│       └── RelatorioService.java (Fachada de Relatórios)
+│ 
+└── README.md
 
 3. **Versão do JAVA utilizada:**  
-   [Descrever aqui como versão do JAVA utilizada no projeto. Sugestão: `java 21`]
+   javac 21.0.8
 
 ---
 
 ## Vídeo de Demonstração
 
-- [Inserir o link para o vídeo no YouTube/Drive aqui]
+[Video no Drive](https://drive.google.com/file/d/1EofTG9vU47HSjfcHRXq5aMNHm1enmrzU/view?usp=sharing)
 
 ---
 
 ## Prints da Execução
 
 1. Menu Principal:  
-   ![Inserir Print 1](caminho/do/print1.png)
+   ![menu principal](Prints/image.png)
 
 2. Cadastro de Médico:  
-   ![Inserir Print 2](caminho/do/print2.png)
+   ![cadastro medico](Prints/image-2.png)
 
-3. Relatório de ?:  
-   ![Inserir Print 3](caminho/do/print3.png)
-
----
+3. Relatório de Internações:  
+   ![relatorio internações](Prints/image-3.png)
 
 ---
 
 ## Observações (Extras ou Dificuldades)
 
-- [Espaço para o aluno comentar qualquer funcionalidade extra que implementou, dificuldades enfrentadas, ou considerações importantes.]
+- Apanhei bastante até conseguir usar o LocalDate, mas gostei muito da funcionalidade, além de descobrir e aprender a listagem com ":" e o tipo de variável "Optional"
 
 ---
 
