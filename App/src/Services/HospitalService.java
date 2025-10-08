@@ -1,14 +1,10 @@
 package Services;
 
 import Entities.*;
-import Services.Nucleo.ConsultaService;
-import Services.Nucleo.CadastroService;
-import Services.Nucleo.InternacaoService;
-import Services.Nucleo.MedicoService;
-import Services.Nucleo.PacienteService;
+import Services.Nucleo.*;
+import Persistencia.*;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -22,6 +18,13 @@ public class HospitalService {
     private List<PlanoSaude> planosDeSaude;
     private List<Quarto> quartos;
 
+    private final PacientePersistencia pacientePersistencia;
+    private final MedicoPersistencia medicoPersistencia;
+    private final ConsultaPersistencia consultaPersistencia;
+    private final InternacaoPersistencia internacaoPersistencia;
+    private final EspecialidadePersistencia especialidadePersistencia;
+    private final PlanoSaudePersistencia planoSaudePersistencia;
+    private final QuartoPersistencia quartoPersistencia;
 
     private final PacienteService pacienteService;
     private final MedicoService medicoService;
@@ -30,20 +33,35 @@ public class HospitalService {
     private final CadastroService cadastroService;
 
     public HospitalService() {
-        this.pacientes = new ArrayList<>();
-        this.medicos = new ArrayList<>();
-        this.consultas = new ArrayList<>();
-        this.internacoes = new ArrayList<>();
-        this.especialidades = new ArrayList<>();
-        this.planosDeSaude = new ArrayList<>();
-        this.quartos = new ArrayList<>();
+        this.pacientePersistencia = new PacientePersistencia();
+        this.medicoPersistencia = new MedicoPersistencia();
+        this.consultaPersistencia = new ConsultaPersistencia();
+        this.internacaoPersistencia = new InternacaoPersistencia();
+        this.especialidadePersistencia = new EspecialidadePersistencia();
+        this.planoSaudePersistencia = new PlanoSaudePersistencia();
+        this.quartoPersistencia = new QuartoPersistencia();
+        
+        carregarDadosIniciais();
 
-        this.pacienteService = new PacienteService(this.pacientes);
-        this.medicoService = new MedicoService(this.medicos);
-        this.consultaService = new ConsultaService(this.consultas, this.pacientes, this.medicos);
-        this.internacaoService = new InternacaoService(this.internacoes, this.pacientes, this.medicos, this.quartos);
-        this.cadastroService = new CadastroService(this.especialidades, this.planosDeSaude, this.quartos);
+        this.pacienteService = new PacienteService(this.pacientes, this.pacientePersistencia);
+        this.medicoService = new MedicoService(this.medicos, this.medicoPersistencia);
+        this.consultaService = new ConsultaService(this.consultas, this.pacientes, this.medicos, this.consultaPersistencia);
+        this.internacaoService = new InternacaoService(this.internacoes, this.pacientes, this.medicos, this.quartos, this.internacaoPersistencia, this.quartoPersistencia);
+        this.cadastroService = new CadastroService(this.especialidades, this.planosDeSaude, this.quartos, this.especialidadePersistencia, this.planoSaudePersistencia, this.quartoPersistencia);
     }
+
+    private void carregarDadosIniciais() {
+        System.out.println("Carregando dados do sistema...");
+        
+        this.especialidades = especialidadePersistencia.carregar();
+        this.planosDeSaude = planoSaudePersistencia.carregar();
+        this.quartos = quartoPersistencia.carregar();
+        this.medicos = medicoPersistencia.carregar(this.especialidades);
+        this.pacientes = pacientePersistencia.carregar(this.planosDeSaude);
+        this.consultas = consultaPersistencia.carregar(this.pacientes, this.medicos);
+        this.internacoes = internacaoPersistencia.carregar(this.pacientes, this.medicos, this.quartos);
+    }
+      
 
     public Paciente cadastrarPaciente(String nome, String cpf, int idade, PlanoSaude plano) {
         return pacienteService.cadastrarPaciente(nome, cpf, idade, plano);
@@ -82,7 +100,7 @@ public class HospitalService {
     }
 
     public void darAltaPaciente(Internacao internacao) {
-    this.internacaoService.darAltaPaciente(internacao);
+        this.internacaoService.darAltaPaciente(internacao);
     }
 
     public PlanoSaude cadastrarPlanoSaude(String nome, boolean internacaoGratuita) {

@@ -3,6 +3,7 @@ package Services.Nucleo;
 import Entities.Paciente;
 import Entities.PacienteEspecial;
 import Entities.PlanoSaude;
+import Persistencia.PacientePersistencia;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,8 +12,11 @@ import java.util.Optional;
 public class PacienteService {
     private List<Paciente> pacientes;
 
-    public PacienteService(List<Paciente> pacientes) {
+    private final PacientePersistencia pacientePersistencia;
+
+    public PacienteService(List<Paciente> pacientes, PacientePersistencia persistencia) {
         this.pacientes = pacientes;
+        this.pacientePersistencia = persistencia;
     }
 
     public List<Paciente> getPacientes() {
@@ -34,6 +38,8 @@ public class PacienteService {
         }
         
         this.pacientes.add(novoPaciente);
+
+        pacientePersistencia.salvar(this.pacientes);
         
         System.out.println("Paciente cadastrado com sucesso!");
         return novoPaciente;

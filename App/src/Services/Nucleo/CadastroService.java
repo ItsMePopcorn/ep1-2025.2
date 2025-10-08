@@ -3,6 +3,9 @@ package Services.Nucleo;
 import Entities.Especialidade;
 import Entities.PlanoSaude;
 import Entities.Quarto;
+import Persistencia.EspecialidadePersistencia;
+import Persistencia.PlanoSaudePersistencia;
+import Persistencia.QuartoPersistencia;
 
 import java.util.List;
 
@@ -11,7 +14,7 @@ public class CadastroService {
     private List<PlanoSaude> planosDeSaude;
     private List<Quarto> quartos;
 
-    public CadastroService(List<Especialidade> especialidades, List<PlanoSaude> planosDeSaude, List<Quarto> quartos) {
+    public CadastroService(List<Especialidade> especialidades, List<PlanoSaude> planosDeSaude, List<Quarto> quartos, EspecialidadePersistencia especialidadePersistencia, PlanoSaudePersistencia planoSaudePersistencia, QuartoPersistencia quartoPersistencia) {
         this.especialidades = especialidades;
         this.planosDeSaude = planosDeSaude;
         this.quartos = quartos;

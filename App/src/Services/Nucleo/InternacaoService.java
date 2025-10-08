@@ -1,6 +1,8 @@
 package Services.Nucleo;
 
 import Entities.*;
+import Persistencia.InternacaoPersistencia;
+import Persistencia.QuartoPersistencia;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +15,7 @@ public class InternacaoService {
     private List<Medico> medicos;
     private List<Quarto> quartos;
 
-    public InternacaoService(List<Internacao> internacoes, List<Paciente> pacientes, List<Medico> medicos, List<Quarto> quartos) {
+    public InternacaoService(List<Internacao> internacoes, List<Paciente> pacientes, List<Medico> medicos, List<Quarto> quartos, InternacaoPersistencia internacaoPersistencia, QuartoPersistencia quartoPersistencia) {
         this.internacoes = internacoes;
         this.pacientes = pacientes;
         this.medicos = medicos;

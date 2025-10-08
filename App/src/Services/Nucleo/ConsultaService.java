@@ -1,6 +1,7 @@
 package Services.Nucleo;
 
 import Entities.*;
+import Persistencia.ConsultaPersistencia;
 
 import java.util.ArrayList;
 import java.time.LocalDateTime;
@@ -12,7 +13,7 @@ public class ConsultaService {
     private List<Paciente> pacientes;
     private List<Medico> medicos;
 
-    public ConsultaService(List<Consulta> consultas, List<Paciente> pacientes, List<Medico> medicos) {
+    public ConsultaService(List<Consulta> consultas, List<Paciente> pacientes, List<Medico> medicos, ConsultaPersistencia consultaPersistencia) {
         this.consultas = consultas;
         this.pacientes = pacientes;
         this.medicos = medicos;

@@ -2,7 +2,7 @@ package Services.Nucleo;
 
 import Entities.Especialidade;
 import Entities.Medico;
-
+import Persistencia.MedicoPersistencia;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +11,7 @@ import java.util.Optional;
 public class MedicoService {
     private List<Medico> medicos;
 
-    public MedicoService(List<Medico> medicos) {
+    public MedicoService(List<Medico> medicos, MedicoPersistencia medicoPersistencia) {
         this.medicos = medicos;
     }
 
