@@ -46,7 +46,7 @@ public class MenuMedicos {
         try {
             System.out.print("Nome: ");
             String nome = scanner.nextLine();
-            System.out.print("CRM (Ex: 12345-SP): ");
+            System.out.print("CRM: ");
             String crm = scanner.nextLine();
             
             Especialidade especialidadeEscolhida = selecionarEspecialidade();
