@@ -42,6 +42,7 @@ Desenvolvimento de um sistema de gerenciamento hospitalar utilizando os conceito
          java -cp bin App
 
 3. **Estrutura de Pastas:**  
+```
  App 
 ├── src/
 │   │
@@ -96,6 +97,7 @@ Desenvolvimento de um sistema de gerenciamento hospitalar utilizando os conceito
 │       └── RelatorioService.java (Fachada de Relatórios)
 │ 
 └── README.md
+```
 
 3. **Versão do JAVA utilizada:**  
    javac 21.0.8
@@ -104,20 +106,20 @@ Desenvolvimento de um sistema de gerenciamento hospitalar utilizando os conceito
 
 ## Vídeo de Demonstração
 
-[Video no Drive](https://drive.google.com/file/d/1EofTG9vU47HSjfcHRXq5aMNHm1enmrzU/view?usp=sharing)
+[Video no Drive](https://drive.google.com/file/d/1tReBE4lgGKUPIYl0svAe5IRqCD9AYhBW/view?usp=sharing)
 
 ---
 
 ## Prints da Execução
 
 1. Menu Principal:  
-   ![menu principal](Prints/image.png)
+   ![Menu Principal](App/Prints/image.png)
 
 2. Cadastro de Médico:  
-   ![cadastro medico](Prints/image-2.png)
+   ![Cadastro Medico](App/Prints/image-2.png)
 
 3. Relatório de Internações:  
-   ![relatorio internações](Prints/image-3.png)
+   ![Relatorio Internações](App/Prints/image-3.png)
 
 ---
 
