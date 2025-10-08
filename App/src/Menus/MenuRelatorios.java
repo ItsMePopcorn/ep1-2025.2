@@ -36,7 +36,9 @@ public class MenuRelatorios {
                     case 4: relatorioService.imprimirRelatorioInternados();
                         break;
                     case 5: relatorioService.imprimirEstatisticasGerais();
-                    case 0: break;
+                        break;
+                    case 0: 
+                        break;
                     default: System.out.println("Opção inválida.");
                 }
             } catch (NumberFormatException e) {
