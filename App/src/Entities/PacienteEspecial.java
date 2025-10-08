@@ -7,7 +7,8 @@ public class PacienteEspecial extends Paciente {
         super(nome, cpf, idade);
         this.plano = plano;
     }
-    
+
+    @Override 
     public double custoConsulta(Consulta consulta){
         double custoPadrao = super.custoConsulta(consulta);
         Especialidade especialidade = consulta.getMedico().getEspecialidade();
