@@ -29,10 +29,14 @@ public class MenuMedicos {
             try {
                 opcao = Integer.parseInt(scanner.nextLine());
                 switch (opcao) {
-                    case 1: cadastrarNovoMedico(); break;
-                    case 2: buscarMedicoPorCRM(); break;
-                    case 3: listarMedicos(); break;
-                    case 0: break;
+                    case 1: cadastrarNovoMedico(); 
+                        break;
+                    case 2: buscarMedicoPorCRM(); 
+                        break;
+                    case 3: listarMedicos(); 
+                        break;
+                    case 0: 
+                        break;
                     default: System.out.println("Opção inválida.");
                 }
             } catch (NumberFormatException e) {

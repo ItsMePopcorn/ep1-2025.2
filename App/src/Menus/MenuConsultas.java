@@ -31,9 +31,12 @@ public class MenuConsultas {
             try {
                 opcao = Integer.parseInt(scanner.nextLine());
                 switch (opcao) {
-                    case 1: agendarNovaConsulta(); break;
-                    case 2: concluirConsulta(); break;
-                    case 3: cancelarConsulta(); break;
+                    case 1: agendarNovaConsulta(); 
+                        break;
+                    case 2: concluirConsulta(); 
+                        break;
+                    case 3: cancelarConsulta(); 
+                        break;
                     case 0: break;
                     default: System.out.println("Opção inválida.");
                 }
@@ -154,7 +157,7 @@ public class MenuConsultas {
         } catch (NumberFormatException e) {
             return null;
         }
-        
+
         System.out.println("Erro: Escolha inválida.");
         return null;
     }

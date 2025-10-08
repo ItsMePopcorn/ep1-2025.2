@@ -29,10 +29,14 @@ public class MenuPacientes {
             try {
                 opcao = Integer.parseInt(scanner.nextLine());
                 switch (opcao) {
-                    case 1: cadastrarNovoPaciente(); break;
-                    case 2: buscarPacientePorCPF(); break;
-                    case 3: listarPacientes(); break;
-                    case 0: break;
+                    case 1: cadastrarNovoPaciente(); 
+                        break;
+                    case 2: buscarPacientePorCPF(); 
+                        break;
+                    case 3: listarPacientes(); 
+                        break;
+                    case 0: 
+                        break;
                     default: System.out.println("Opção inválida.");
                 }
             } catch (NumberFormatException e) {

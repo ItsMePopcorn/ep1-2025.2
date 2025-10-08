@@ -26,10 +26,14 @@ public class MenuCadastros{
             try {
                 opcao = Integer.parseInt(scanner.nextLine());
                 switch (opcao) {
-                    case 1: cadastrarNovoPlanoDeSaude(); break;
-                    case 2: cadastrarNovaEspecialidade(); break;
-                    case 3: cadastrarNovoQuarto(); break;
-                    case 0: break;
+                    case 1: cadastrarNovoPlanoDeSaude(); 
+                        break;
+                    case 2: cadastrarNovaEspecialidade(); 
+                        break;
+                    case 3: cadastrarNovoQuarto(); 
+                        break;
+                    case 0: 
+                        break;
                     default: System.out.println("Opção inválida.");
                 }
             } catch (NumberFormatException e) {
