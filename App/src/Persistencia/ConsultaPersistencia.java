@@ -10,7 +10,7 @@ import java.util.List;
 public class ConsultaPersistencia {
 
     private static final String SEPARADOR = ";";
-    private static final String ARQUIVO_CONSULTAS = "data/consultas.csv";
+    private static final String ARQUIVO_CONSULTAS = "consultas.csv";
     private static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ISO_LOCAL_DATE_TIME;
 
     public void salvar(List<Consulta> consultas) {

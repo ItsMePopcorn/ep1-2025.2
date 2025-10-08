@@ -7,7 +7,7 @@ import java.util.List;
 
 public class EspecialidadePersistencia {
 
-    private static final String ARQUIVO_ESPECIALIDADES = "data/especialidades.csv";
+    private static final String ARQUIVO_ESPECIALIDADES = "especialidades.csv";
 
     public void salvar(List<Especialidade> especialidades) {
         try {

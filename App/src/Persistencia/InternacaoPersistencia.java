@@ -9,7 +9,7 @@ import java.util.List;
 public class InternacaoPersistencia {
 
     private static final String SEPARADOR = ";";
-    private static final String ARQUIVO_INTERNACOES = "data/internacoes.csv";
+    private static final String ARQUIVO_INTERNACOES = "internacoes.csv";
 
     public void salvar(List<Internacao> internacoes) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(ARQUIVO_INTERNACOES))){

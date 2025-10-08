@@ -8,7 +8,7 @@ import java.util.List;
 public class PacientePersistencia {
 
     private static final String SEPARADOR = ";";
-    private static final String ARQUIVO_PACIENTES = "data/pacientes.csv";
+    private static final String ARQUIVO_PACIENTES = "pacientes.csv";
 
     public void salvar(List<Paciente> pacientes) {
         try {
