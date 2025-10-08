@@ -13,10 +13,13 @@ public class ConsultaService {
     private List<Paciente> pacientes;
     private List<Medico> medicos;
 
-    public ConsultaService(List<Consulta> consultas, List<Paciente> pacientes, List<Medico> medicos, ConsultaPersistencia consultaPersistencia) {
+    private final ConsultaPersistencia consultaPersistencia;
+
+    public ConsultaService(List<Consulta> consultas, List<Paciente> pacientes, List<Medico> medicos, ConsultaPersistencia consulta) {
         this.consultas = consultas;
         this.pacientes = pacientes;
         this.medicos = medicos;
+        this.consultaPersistencia = consulta;
     }
 
     public boolean agendarConsulta(String pacienteCpf, String medicoCrm, LocalDateTime dataHora, String sala) {
@@ -61,12 +64,15 @@ public class ConsultaService {
         medico.adicionarConsultaAgenda(novaConsulta);
 
         System.out.println("Consulta agendada com sucesso!");
+
+        consultaPersistencia.salvar(this.consultas);
+
         return true;
     }
 
     public void concluirConsulta(Consulta consulta, String diagnostico, String medicamentos) {
         if (consulta.getStatus() != StatusConsulta.Marcada) {
-            System.out.println("ERRO: Ação não permitida. A consulta não está com o status 'Marcada'.");
+            System.out.println("Erro: Ação não permitida. A consulta não está com o status 'Marcada'.");
             return;
         }
         consulta.setDiagnostico(diagnostico);
@@ -77,11 +83,13 @@ public class ConsultaService {
 
     public void cancelarConsulta(Consulta consulta) {
         if (consulta.getStatus() != StatusConsulta.Marcada) {
-            System.out.println("ERRO: Ação não permitida. A consulta não pode mais ser cancelada.");
+            System.out.println("Erro: Ação não permitida. A consulta não pode mais ser cancelada.");
             return;
         }
         consulta.setStatus(StatusConsulta.Cancelada);
         System.out.println("Consulta cancelada com sucesso.");
+
+        consultaPersistencia.salvar(this.consultas);
     }
 
     private Optional<Paciente> buscarPacientePorCpf(String cpf) {

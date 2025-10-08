@@ -11,8 +11,11 @@ import java.util.Optional;
 public class MedicoService {
     private List<Medico> medicos;
 
-    public MedicoService(List<Medico> medicos, MedicoPersistencia medicoPersistencia) {
+    private final MedicoPersistencia medicoPersistencia;
+
+    public MedicoService(List<Medico> medicos, MedicoPersistencia medico) {
         this.medicos = medicos;
+        this.medicoPersistencia = medico;
     }
 
     public List<Medico> getMedicos() {
@@ -21,13 +24,16 @@ public class MedicoService {
 
     public Medico cadastrarMedico(String nome, String crm, Especialidade especialidade, double custoConsulta) {
         if (buscarMedicoPorCrm(crm).isPresent()) {
-            System.out.println("ERRO: Médico com CRM " + crm + " já está cadastrado.");
+            System.out.println("Erro: Médico com CRM " + crm + " já está cadastrado.");
             return null;
         }
         Medico novoMedico = new Medico(nome, crm, especialidade, custoConsulta);
         this.medicos.add(novoMedico);
         
         System.out.println("Médico cadastrado com sucesso!");
+
+        medicoPersistencia.salvar(this.medicos);
+
         return novoMedico;
     }
 

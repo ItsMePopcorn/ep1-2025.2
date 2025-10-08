@@ -14,9 +14,9 @@ public class PacienteService {
 
     private final PacientePersistencia pacientePersistencia;
 
-    public PacienteService(List<Paciente> pacientes, PacientePersistencia persistencia) {
+    public PacienteService(List<Paciente> pacientes, PacientePersistencia paciente) {
         this.pacientes = pacientes;
-        this.pacientePersistencia = persistencia;
+        this.pacientePersistencia = paciente;
     }
 
     public List<Paciente> getPacientes() {

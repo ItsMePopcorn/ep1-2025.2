@@ -15,11 +15,16 @@ public class InternacaoService {
     private List<Medico> medicos;
     private List<Quarto> quartos;
 
-    public InternacaoService(List<Internacao> internacoes, List<Paciente> pacientes, List<Medico> medicos, List<Quarto> quartos, InternacaoPersistencia internacaoPersistencia, QuartoPersistencia quartoPersistencia) {
+    private final InternacaoPersistencia internacaoPersistencia;
+    private final QuartoPersistencia quartoPersistencia;
+
+    public InternacaoService(List<Internacao> internacoes, List<Paciente> pacientes, List<Medico> medicos, List<Quarto> quartos, InternacaoPersistencia internacao, QuartoPersistencia quarto) {
         this.internacoes = internacoes;
         this.pacientes = pacientes;
         this.medicos = medicos;
         this.quartos = quartos;
+        this.internacaoPersistencia = internacao;
+        this.quartoPersistencia = quarto;
     }
 
     public List<Internacao> getInternacoes() {
@@ -62,16 +67,23 @@ public class InternacaoService {
         paciente.adicionarInternacao(novaInternacao);
         
         System.out.println("Paciente internado com sucesso no quarto " + quarto.getNumero());
+
+        internacaoPersistencia.salvar(this.internacoes);
+        quartoPersistencia.salvar(this.quartos);
+
         return true;
     }
 
     public void darAltaPaciente(Internacao internacao) {
         if (internacao.getDataSaida() != null) {
-            System.out.println("ERRO: Este paciente já recebeu alta anteriormente.");
+            System.out.println("Erro: Este paciente já recebeu alta anteriormente.");
             return;
         }
         internacao.setDataSaida(LocalDate.now());
         System.out.println("Alta registrada para o paciente.");
+
+        internacaoPersistencia.salvar(this.internacoes);
+        quartoPersistencia.salvar(this.quartos);
     }
 
     private Optional<Paciente> buscarPacientePorCpf(String cpf) {
