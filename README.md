@@ -20,6 +20,7 @@ Desenvolvimento de um sistema de gerenciamento hospitalar utilizando os conceito
 ## Instruções para Compilação e Execução
 
 1. **Compilação:**  
+```
    Pelo vscode:
       Instale, na aba de extensões, a extensão "Extension Pack for Java"
       Compile diretamente pelo vscode
@@ -30,9 +31,10 @@ Desenvolvimento de um sistema de gerenciamento hospitalar utilizando os conceito
          mkdir bin
       Compile com
          javac -d bin -sourcepath src src\App.java
-
+```
 
 2. **Execução:**  
+```
    Pelo vscode:
       Abra o arquivo App.java, no vscode
       Clique no botão de execução, no canto superior direito
@@ -40,6 +42,7 @@ Desenvolvimento de um sistema de gerenciamento hospitalar utilizando os conceito
    Pelo terminal:
       Execute com:
          java -cp bin App
+```
 
 3. **Estrutura de Pastas:**  
 ```
